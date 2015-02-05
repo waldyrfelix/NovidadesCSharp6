@@ -46,6 +46,22 @@ namespace NovidadesCSharp6
 
             Assert.AreEqual("Meu {Mouse} pifou as " + DateTime.Now.ToShortTimeString() + ".", sentença);
         }
+
+
+        [TestMethod]
+        public void TesteInterpolaçãoComExpressões()
+        {
+            var p = new Produto
+            {
+                Nome = "Post It",
+                Preço = 4.5m
+            };
+
+            var sentença = $"{p.Nome} {p.Preço:c} {(p.Preço < 10 ? "promoção!" : "" )}";
+            // sentença: Post It $4.50 promoção!
+
+            Assert.AreEqual("Post It $4.50 promoção!", sentença);
+        }
     }
 
     public class Produto
